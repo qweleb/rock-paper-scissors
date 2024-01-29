@@ -26,29 +26,43 @@
 
       function judgeWinner(playerChoice, computerChoice) {
         if (playerChoice == computerChoice) {
-          roundNumber = roundNumber++;
+          roundNumber++;
           return "It's a Draw";
         } else if (
           (playerChoice == "scissors" && computerChoice == "paper") ||
           (playerChoice == "paper" && computerChoice == "rock") ||
           (playerChoice == "rock" && computerChoice == "scissors")
         ) {
-          roundNumber = roundNumber++;
-          playerScore = playerChoice++;
+          roundNumber++;
+          playerChoice++;
           return "You win this round!";
         } else {
-          roundNumber = roundNumber++;
-          computerScore = computerScore++;
+          roundNumber++;
+          computerScore++;
           return "You lose this round!";
         }
       }
 
-      let computerChoice = getComputerChoice();
-      let playerChoice = prompt("Rock, Paper or Scissors?");
-      console.log("Computer Choice: " + computerChoice);
-      console.log("Player Choice: " + playerChoice);
-      console.log("Round Number: " + roundNumber);
-      console.log(judgeWinner(playerChoice, computerChoice));
+      function playGame() {
+        while (roundNumber <= 5) {
+          let computerChoice = getComputerChoice();
+          let playerChoice = prompt("Rock, Paper or Scissors?");
+          console.log("Computer Choice: " + computerChoice);
+          console.log("Player Choice: " + playerChoice);
+          console.log("Round Number: " + roundNumber);
+          console.log(judgeWinner(playerChoice, computerChoice));
+        }
+      }
+
+      playGame();
+
+      if (playerScore == computerScore) {
+        console.log("Overall, It's a draw!");
+      } else if (playerScore > computerScore) {
+        console.log("Overall, you WIN the game!")
+      } else {
+        console.log("Overall, you LOSE the game!")
+      }
     </script>
   </body>
 </html>
