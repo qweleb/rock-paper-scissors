@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="javascript" href="./javascript.js" />
+    <title>Rock, Paper, Scissors</title>
+  </head>
+  <body>
+    <script>
+      let roundNumber = 1;
+      let playerScore = 0;
+      let computerScore = 0;
+
+      function getComputerChoice() {
+        let choiceInt = Math.floor(Math.random() * 3);
+        if (choiceInt == 0) {
+          return "rock";
+        } else if (choiceInt == 1) {
+          return "paper";
+        } else {
+          return "scissors";
+        }
+      }
+
+      function judgeWinner(playerChoice, computerChoice) {
+        if (playerChoice == computerChoice) {
+          roundNumber = roundNumber++;
+          return "It's a Draw";
+        } else if (
+          (playerChoice == "scissors" && computerChoice == "paper") ||
+          (playerChoice == "paper" && computerChoice == "rock") ||
+          (playerChoice == "rock" && computerChoice == "scissors")
+        ) {
+          roundNumber = roundNumber++;
+          playerScore = playerChoice++;
+          return "You win this round!";
+        } else {
+          roundNumber = roundNumber++;
+          computerScore = computerScore++;
+          return "You lose this round!";
+        }
+      }
+
+      let computerChoice = getComputerChoice();
+      let playerChoice = prompt("Rock, Paper or Scissors?");
+      console.log("Computer Choice: " + computerChoice);
+      console.log("Player Choice: " + playerChoice);
+      console.log("Round Number: " + roundNumber);
+      console.log(judgeWinner(playerChoice, computerChoice));
+    </script>
+  </body>
+</html>
